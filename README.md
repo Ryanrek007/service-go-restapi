@@ -55,7 +55,7 @@ Mariadb is database relational opensource built in, that we handle this GET Requ
 Proxysql is a high performance opensource technology for MySQL (Mariadb).
 It's useful because we only need expose 1 IP address for accesing the database cluster without need to expose all of IP address based on database server. We can configure how the database server can handle read only or write only
 
-4. Framework Golang v.1.17.3, with Gin Framework as a HTTP web
+4. Framework Golang v.1.16.15, with Gin Framework as a HTTP web
 
 - as mention above, for database replication we are using Galera Clustering that technology replication data for Mariadb.
 
@@ -73,7 +73,7 @@ All of service below using Operating System Linux based and define on local netw
 - List Of security Groups: <br />
     | no.  | Name security Group  | Description        | Direction       | Port range | Remote API Prefix| Assign to Service|
     | :---:|  :---:     | :---                         | :---            | :---       | :---             | :---|
-    | 1    | HTTP       | Allow port HTTP              | Ingress         | 80         | 0.0.0.0/0        | Nginx |
+    | 1    | HTTP       | Allow port HTTP              | Ingress         | 80 , 8080  | 0.0.0.0/0        | Nginx |
     | 2    | HTTPS      | Allow port HTTPS             | Ingress         | 443        | 0.0.0.0/0        | Nginx |
     | 3    | MYSQL      | Allow port MYSQL             | Ingress         | 3306       | 192.168.41.0/24  | Mariadb, Nginx, ProxySQL |
     | 4    | PROXYSQL   | Allow port dashboard proxysql| Ingress         | 6032       | 192.168.41.0/24  | ProxySQL |

@@ -1,0 +1,18 @@
+services:
+  go-restapi:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: container-go_restapi
+    ports:
+      - "8080:8080"
+
+  nginx-go-restapi:
+    build:
+      context: ./nginx
+      dockerfile: ./Dockerfile-nginx
+    container_name: container-nginx-go_restapi
+    ports:
+      - "80:80"
+    depends_on:
+      - "go-restapi"
