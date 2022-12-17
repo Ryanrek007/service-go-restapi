@@ -14,6 +14,7 @@ func main() {
 	models.ConnectDatabase()
 
 	router.GET("/endpoint", controllers.Index)
+	router.GET("/weather", controllers.WeatherResponse)
 
 	router.Run()
 
