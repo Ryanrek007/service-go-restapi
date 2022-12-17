@@ -1,0 +1,29 @@
+name: Build & Publish Docker Image
+
+on:
+  push:
+    branches: ["dev", "main"]
+
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    steps:   
+    - uses: actions/checkout@v2
+    - name: Build Docker Image (Golang RESTAPI)
+      run: docker build . --tag my-image-name:$(date +%s)
+
+    - name: Publish into Docker Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: ryanrek007/golang-restapi
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+
+
+
+
+
+    # - name: Build Docker Image (Golang RESTAPI)
+    #   run: docker build . -t 
