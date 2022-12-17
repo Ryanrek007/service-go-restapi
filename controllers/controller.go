@@ -18,7 +18,7 @@ func Index(c *gin.Context) {
 
 	models.DB.Find(&staff)
 	c.JSON(http.StatusOK, gin.H{
-		"Data Karyawan": staff,
+		"Data Staff": staff,
 	})
 }
 
