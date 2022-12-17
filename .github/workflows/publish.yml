@@ -7,11 +7,11 @@ on:
 
 jobs:
   build-publish:
-    runs-on: ubuntu:latest
+    runs-on: ubuntu-latest
     steps:   
     - uses: actions/checkout@v2
     - name: Build Docker Image (Golang RESTAPI)
-      run: docker build . --tag my-image-name:$(date + %)
+      run: docker build . --tag my-image-name:$(date + %s)
 
     - name: Publish into Docker Registry
       uses: elgohr/Publish-Docker-Github-Action@master
