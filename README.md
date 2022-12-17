@@ -39,10 +39,39 @@ secure and hardened free from any kind of CVE
 mechanics to observe (trace, log. get metrics) from your Deployment
 <br><br>
 
-## Solution
----
-The architecture design that I made, accordingly with the diagram below:
-![My Remote Image](documentation/Diagram-Architecture.jpg) <br />
+# Decision and Resolution
+
+Tech Stack:
+ - Golang, Gin, Gorm Framework
+ - Docker
+ - Terraform
+
+ ## How to run using docker-compose
+ ```
+ docker-compose up -d --build
+ ```
+## Pulling from Dockerhub
+```
+docker run -tid -p 8080:8080 ryanrek007/golang-restapi
+```
+*note: all environment using localhost, therefor we need to specify database dummy.
+
+Example Response GET
+- result method **GET** `/endpoint`:<br />
+![response method GET /endpoint](documentation/GET_Endpoint.png) <br />
+
+- result method **GET** `/weather`:<br />
+![response method GET /endpoint](documentation/GET_weather.png) <br />
+
+The Golang RestAPI webservice get all records JSON using modules GO, GIN HTTP web for resolving all records that I define on main.go. <br />
+
+For Response **GET** `/weather`, I call from https://openweathermap.org API.<br />
+
+# Architecture
+
+The architecture design that I made, accordingly with the diagram below: <br />
+
+![Architecture Design Image](documentation/Diagram-Architecture.jpg) <br />
 
 The Underlying techstack that I Used on to run REST API Services:
 1. Web Service, using **NGINX** <br />
@@ -79,3 +108,5 @@ All of service below using Operating System Linux based and define on local netw
     | 4    | PROXYSQL   | Allow port dashboard proxysql| Ingress         | 6032       | 192.168.41.0/24  | ProxySQL |
     | 5    | ICMP       | Allow port MYSQL             | Egress , Ingress| any        | 0.0.0.0/0        | Nginx, Mariadb, ProxySQL |
     | 6    | SSH        | Allow port SSH               | Ingress         | 22         | 192.168.41.0/24, trusted network  | Nginx, Mariadb, ProxySQL |
+
+For building the image and pushing into docker registry (dockerhub), I have already implementated Continuous Integration (CI) using Github Action for service Go RESTAPI using base image alpine:3.17.0 that installed all of dependencies on it. The results of the pipelines is docker images that anyone can pull from dockerhub `ryanrek007/golang-restapi`

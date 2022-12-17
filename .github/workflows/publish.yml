@@ -19,11 +19,3 @@ jobs:
         name: ryanrek007/golang-restapi
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-
-
-
-
-
-
-    # - name: Build Docker Image (Golang RESTAPI)
-    #   run: docker build . -t 
