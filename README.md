@@ -109,4 +109,4 @@ All of service below using Operating System Linux based and define on local netw
     | 5    | ICMP       | Allow port MYSQL             | Egress , Ingress| any        | 0.0.0.0/0        | Nginx, Mariadb, ProxySQL |
     | 6    | SSH        | Allow port SSH               | Ingress         | 22         | 192.168.41.0/24, trusted network  | Nginx, Mariadb, ProxySQL |
 
-For building the image and pushing into docker registry (dockerhub), I already implementating Continuous Integration (CI) using Github Action. The results of the pipelines is docker images that anyone can pull from dockerhub `ryanrek007/golang-restapi`
+For building the image and pushing into docker registry (dockerhub), I have already implementated Continuous Integration (CI) using Github Action for service Go RESTAPI using base image alpine:3.17.0 that installed all of dependencies on it. The results of the pipelines is docker images that anyone can pull from dockerhub `ryanrek007/golang-restapi`
